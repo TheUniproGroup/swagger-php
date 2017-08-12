@@ -36,7 +36,7 @@ if (defined('Swagger\UNDEFINED') === false) {
         $exclude = array_key_exists('exclude', $options) ? $options['exclude'] : null;
 
         // Crawl directory and parse all files
-        $finder = Util::finder($directory, $exclude);
+        $finder = Util::finder($directory, $exclude, isset($options['exts']) ? $options['exts'] : '*.php');
         foreach ($finder as $file) {
             $analysis->addAnalysis($analyser->fromFile($file->getPathname()));
         }
